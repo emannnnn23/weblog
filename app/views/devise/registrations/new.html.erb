@@ -1,0 +1,216 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center min-vh-100 py-5">
+    <div class="col-md-10 col-lg-9">
+      <div class="row g-0 shadow-lg" style="border-radius: 20px; overflow: hidden;">
+        
+        <!-- Left Panel - Form -->
+        <div class="col-md-7 bg-white">
+          <div class="p-5">
+            
+            <!-- Mobile Logo -->
+            <div class="text-center mb-4 d-md-none">
+              <div class="d-inline-block p-3 rounded-circle" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <i class="bi bi-person-plus-fill fs-3 text-white"></i>
+              </div>
+            </div>
+
+            <h2 class="fw-bold mb-2 text-center text-md-start" style="color: #1f2937;">Create Account</h2>
+            <p class="text-muted mb-4 text-center text-md-start">Join us today and start sharing your stories</p>
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+
+              <!-- Name Field -->
+              <div class="mb-3">
+                <%= f.label :name, class: "form-label fw-semibold text-dark" do %>
+                  <i class="bi bi-person me-2" style="color: #667eea;"></i>Full Name
+                <% end %>
+                <div class="input-group">
+                  <span class="input-group-text bg-white border-end-0" style="border-radius: 12px 0 0 12px;">
+                    <i class="bi bi-person-badge text-muted"></i>
+                  </span>
+                  <%= f.text_field :name, 
+                      autofocus: true, 
+                      autocomplete: "name",
+                      class: "form-control form-control-lg border-start-0 ps-0",
+                      placeholder: "Emanuel",
+                      style: "border-radius: 0 12px 12px 0;" %>
+                </div>
+              </div>
+
+              <!-- Email Field -->
+              <div class="mb-3">
+                <%= f.label :email, class: "form-label fw-semibold text-dark" do %>
+                  <i class="bi bi-envelope me-2" style="color: #667eea;"></i>Email Address
+                <% end %>
+                <div class="input-group">
+                  <span class="input-group-text bg-white border-end-0" style="border-radius: 12px 0 0 12px;">
+                    <i class="bi bi-at text-muted"></i>
+                  </span>
+                  <%= f.email_field :email, 
+                      autocomplete: "email",
+                      class: "form-control form-control-lg border-start-0 ps-0",
+                      placeholder: "you@example.com",
+                      style: "border-radius: 0 12px 12px 0;" %>
+                </div>
+              </div>
+
+              <!-- Password Field -->
+              <div class="mb-3">
+                <%= f.label :password, class: "form-label fw-semibold text-dark" do %>
+                  <i class="bi bi-shield-lock me-2" style="color: #667eea;"></i>Password
+                  <% if @minimum_password_length %>
+                    <span class="text-muted fw-normal ms-2" style="font-size: 0.85rem;">
+                      (min <%= @minimum_password_length %> characters)
+                    </span>
+                  <% end %>
+                <% end %>
+                <div class="input-group">
+                  <span class="input-group-text bg-white border-end-0" style="border-radius: 12px 0 0 12px;">
+                    <i class="bi bi-key text-muted"></i>
+                  </span>
+                  <%= f.password_field :password, 
+                      autocomplete: "new-password",
+                      class: "form-control form-control-lg border-start-0 ps-0",
+                      placeholder: "Create a strong password",
+                      style: "border-radius: 0 12px 12px 0;" %>
+                </div>
+              </div>
+
+              <!-- Password Confirmation Field -->
+              <div class="mb-4">
+                <%= f.label :password_confirmation, class: "form-label fw-semibold text-dark" do %>
+                  <i class="bi bi-check-circle me-2" style="color: #667eea;"></i>Confirm Password
+                <% end %>
+                <div class="input-group">
+                  <span class="input-group-text bg-white border-end-0" style="border-radius: 12px 0 0 12px;">
+                    <i class="bi bi-shield-check text-muted"></i>
+                  </span>
+                  <%= f.password_field :password_confirmation, 
+                      autocomplete: "new-password",
+                      class: "form-control form-control-lg border-start-0 ps-0",
+                      placeholder: "Re-enter your password",
+                      style: "border-radius: 0 12px 12px 0;" %>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="d-grid mb-4">
+                <%= f.submit "Create Account", 
+                    class: "btn btn-lg text-white fw-bold shadow-lg position-relative overflow-hidden",
+                    style: "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; border: none;" %>
+              </div>
+
+            <% end %>
+
+            <!-- Links -->
+            <div class="text-center">
+              <%= render "devise/shared/links" %>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Panel - Decorative -->
+        <div class="col-md-5 d-none d-md-block position-relative">
+          <div class="h-100 d-flex flex-column justify-content-center align-items-center text-white p-5" 
+               style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div class="text-center">
+              <div class="mb-4" style="font-size: 5rem;">🚀</div>
+              <h3 class="fw-bold mb-3">Join Our Community</h3>
+              <p class="opacity-75 mb-4">Create an account to unlock amazing features</p>
+              
+              <!-- Feature List -->
+              <div class="text-start">
+                <div class="d-flex align-items-center mb-3">
+                  <div class="bg-white bg-opacity-25 rounded-circle p-2 me-3">
+                    <i class="bi bi-check-lg fw-bold"></i>
+                  </div>
+                  <span>Share your stories</span>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                  <div class="bg-white bg-opacity-25 rounded-circle p-2 me-3">
+                    <i class="bi bi-check-lg fw-bold"></i>
+                  </div>
+                  <span>Connect with others</span>
+                </div>
+                <div class="d-flex align-items-center">
+                  <div class="bg-white bg-opacity-25 rounded-circle p-2 me-3">
+                    <i class="bi bi-check-lg fw-bold"></i>
+                  </div>
+                  <span>Discover amazing content</span>
+                </div>
+              </div>
+
+              <!-- Decorative Circles -->
+              <div class="position-absolute bottom-0 end-0 me-4 mb-4 opacity-25">
+                <div class="circle-pattern"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Input Focus Effects */
+.form-control:focus {
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.25) !important;
+}
+
+.input-group:focus-within .input-group-text {
+  border-color: #667eea !important;
+}
+
+/* Button Hover */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4) !important;
+  transition: all 0.3s ease;
+}
+
+/* Card entrance animation */
+.row.g-0 {
+  animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Decorative pattern */
+.circle-pattern {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Checkmark animation */
+.bi-check-lg {
+  animation: checkPop 0.5s ease-out;
+}
+
+@keyframes checkPop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+</style>

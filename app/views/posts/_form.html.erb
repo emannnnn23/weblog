@@ -1,0 +1,59 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-gradient text-white py-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+          <h3 class="mb-0 text-center">
+            <i class="bi bi-pencil-square me-2"></i>Create New Post
+          </h3>
+        </div>
+        
+        <div class="card-body p-4">
+          <div class="alert alert-light border-start border-primary border-4 mb-4" role="alert">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-person-circle fs-4 text-primary me-3"></i>
+              <div>
+                <small class="text-muted d-block">Author</small>
+                <strong class="text-dark"><%= @post.user.name %></strong>
+              </div>
+            </div>
+          </div>
+
+          <%= form_with model: @post, class: "needs-validation" do |form| %>
+            <div class="mb-4">
+              <%= form.label :title, class: "form-label fw-bold" do %>
+                <i class="bi bi-type text-primary me-2"></i>Title
+              <% end %>
+              <%= form.text_field :title, 
+                  class: "form-control form-control-lg", 
+                  placeholder: "Enter an eye-catching title...",
+                  required: true %>
+            </div>
+
+            <div class="mb-4">
+              <%= form.label :body, class: "form-label fw-bold" do %>
+                <i class="bi bi-card-text text-primary me-2"></i>Body
+              <% end %>
+              <%= form.text_area :body, 
+                  class: "form-control", 
+                  rows: 10,
+                  placeholder: "Share your thoughts...",
+                  required: true,
+                  style: "resize: vertical;" %>
+              <div class="form-text">
+                <i class="bi bi-lightbulb me-1"></i>
+                Write something meaningful and engaging
+              </div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <%= form.submit "Create Post", 
+                  class: "btn btn-lg text-white fw-bold shadow",
+                  style: "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

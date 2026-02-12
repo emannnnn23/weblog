@@ -1,0 +1,22 @@
+<div id="<%= dom_id comment %>" class="comment-bubble mb-3">
+  <div class="p-3 rounded-3 shadow-sm position-relative" 
+       style="background: linear-gradient(135deg, #f8f9ff 0%, #e9ecff 100%); border-left: 4px solid #667eea;">
+    <p class="mb-0 text-dark"><%= comment.body %></p>
+  </div>
+</div>
+
+<style>
+.comment-bubble {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.comment-bubble:hover {
+  transform: translateX(3px);
+  transition: transform 0.2s ease;
+}
+</style>

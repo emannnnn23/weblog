@@ -1,0 +1,6 @@
+<%= form_with model: @profile do |form| %>
+  <%= form.label :bio %>
+  <%= form.text_field :bio %>
+
+  <%= form.submit "Create Profile" %>
+<% end %>

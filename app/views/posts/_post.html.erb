@@ -1,0 +1,86 @@
+<div class="col-md-6 col-lg-4 mb-4">
+  <div id="<%= dom_id post %>" class="post-card h-100">
+    <div class="card h-100 border-0 shadow-lg position-relative overflow-hidden">
+      <!-- Gradient Overlay -->
+      <div class="gradient-overlay position-absolute top-0 start-0 w-100" 
+           style="height: 5px; background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);"></div>
+      
+      <!-- Card Body -->
+      <div class="card-body p-4 d-flex flex-column">
+        <!-- Author Badge -->
+        <div class="mb-3">
+          <span class="badge rounded-pill" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <i class="bi bi-person-fill me-1"></i>
+            <%= post.user.name %>
+          </span>
+        </div>
+        
+        <!-- Title -->
+        <h5 class="card-title fw-bold mb-3 flex-grow-0" style="color: #1f2937;">
+          <%= post.title %>
+        </h5>
+        
+        <!-- Body Preview -->
+        <p class="card-text text-muted mb-4 flex-grow-1" style="line-height: 1.6;">
+          <%= truncate(post.body, length: 120) %>
+        </p>
+        
+        <!-- Footer Info -->
+        <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top">
+          <small class="text-muted">
+            <i class="bi bi-calendar3 me-1"></i>
+            <%= post.created_at.strftime("%b %d") %>
+          </small>
+          
+          <% unless current_page?(post_path(post)) %>
+            <%= link_to post, class: "btn btn-sm px-3 fw-bold text-white shadow-sm stretched-link", 
+                style: "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px;" do %>
+              Read More <i class="bi bi-arrow-right ms-1"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      
+      <!-- Hover Glow Effect -->
+      <div class="hover-glow position-absolute top-0 start-0 w-100 h-100" 
+           style="opacity: 0; background: radial-gradient(circle at center, rgba(102, 126, 234, 0.1) 0%, transparent 70%); transition: opacity 0.3s ease;"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+.post-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.post-card:hover {
+  transform: translateY(-7px);
+}
+
+.post-card:hover .hover-glow {
+  opacity: 1 !important;
+}
+
+.post-card .card {
+  transition: box-shadow 0.3s ease;
+}
+
+.post-card:hover .card {
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3) !important;
+}
+
+.post-card .stretched-link:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.gradient-overlay {
+  animation: shimmer 3s infinite linear;
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+</style>

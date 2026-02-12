@@ -1,0 +1,33 @@
+<%= form_with model: [post, comment], class: "comment-form" do |f| %>
+  <div class="mb-3">
+    <%= f.text_area :body, 
+        placeholder: "Share your thoughts...", 
+        class: "form-control border-2 shadow-sm", 
+        rows: 4,
+        style: "resize: vertical; border-radius: 12px;" %>
+    <div class="form-text mt-2">
+      <i class="bi bi-info-circle me-1"></i>
+      <small>Be respectful and constructive in your comments</small>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <%= f.submit "Post Comment", 
+        class: "btn btn-primary px-4 fw-bold shadow-sm",
+        style: "border-radius: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;" do %>
+      <i class="bi bi-send-fill me-2"></i>Post Comment
+    <% end %>
+  </div>
+<% end %>
+
+<style>
+.comment-form .form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.25);
+}
+
+.comment-form textarea::placeholder {
+  color: #9ca3af;
+  font-style: italic;
+}
+</style>

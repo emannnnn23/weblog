@@ -1,0 +1,109 @@
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="bi bi-check-circle-fill me-2"></i><%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      
+      <!-- Main Post Card -->
+      <div class="card shadow-lg border-0 mb-4">
+        <!-- Post Header with Gradient -->
+        <div class="card-header border-0 py-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+              <div class="bg-white rounded-circle p-2 me-3">
+                <i class="bi bi-person-fill fs-4" style="color: #667eea;"></i>
+              </div>
+              <div>
+                <h6 class="text-white mb-0 fw-bold"><%= @post.user.name %></h6>
+                <small class="text-white opacity-75">
+                  <i class="bi bi-calendar3 me-1"></i>
+                  <%= @post.created_at.strftime("%B %d, %Y") %>
+                </small>
+              </div>
+            </div>
+            
+            <% if @post.user == current_user %>
+              <span class="badge bg-white text-primary">Your Post</span>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Post Content -->
+        <div class="card-body p-5">
+          <h1 class="card-title mb-4 fw-bold display-5"><%= @post.title %></h1>
+          <div class="post-content">
+            <p class="card-text fs-5 lh-lg text-dark"><%= simple_format(@post.body) %></p>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="card-footer bg-light border-0 p-4">
+          <div class="d-flex gap-2 flex-wrap">
+            <% if @post.user == current_user %>
+              <%= link_to edit_post_path(@post), class: "btn btn-outline-primary" do %>
+                <i class="bi bi-pencil-square me-2"></i>Edit Post
+              <% end %>
+              <%= button_to @post, method: :delete, 
+                  data: { confirm: "Are you sure you want to delete this post?" }, 
+                  class: "btn btn-outline-danger" do %>
+                <i class="bi bi-trash3 me-2"></i>Delete Post
+              <% end %>
+            <% end %>
+            <%= link_to posts_path, class: "btn btn-outline-secondary ms-auto" do %>
+              <i class="bi bi-arrow-left me-2"></i>Back to Posts
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comments Section -->
+      <div class="card shadow border-0 mb-4">
+        <div class="card-header bg-white border-bottom py-3">
+          <h4 class="mb-0 fw-bold">
+            <i class="bi bi-chat-dots text-primary me-2"></i>
+            Comments <span class="badge bg-primary rounded-pill"><%= @post.comments.count %></span>
+          </h4>
+        </div>
+        
+        <div class="card-body p-4">
+          <!-- Comment Form -->
+          <div class="mb-4 p-4 bg-light rounded-3">
+            <h5 class="mb-3 fw-bold">
+              <i class="bi bi-chat-left-text me-2"></i>Add a Comment
+            </h5>
+            <%= render "comments/form", post: @post, comment: Comment.new %>
+          </div>
+
+          <!-- Comments List -->
+          <div class="comments-list">
+            <% if @post.comments.any? %>
+              <%= render @post.comments %>
+            <% else %>
+              <div class="text-center py-5 text-muted">
+                <i class="bi bi-chat-square-dots fs-1 d-block mb-3 opacity-50"></i>
+                <p class="mb-0">No comments yet. Be the first to comment!</p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+.post-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.comments-list > * + * {
+  margin-top: 1rem;
+}
+</style>
