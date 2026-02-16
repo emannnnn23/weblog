@@ -45,6 +45,10 @@
                 Write something meaningful and engaging
               </div>
             </div>
+            <div class="mb-3">
+              <%= form.label :image %>
+              <%= form.file_field :image, class: "form-control" %>
+            </div>
 
             <div class="d-grid gap-2">
               <%= form.submit "Create Post", 

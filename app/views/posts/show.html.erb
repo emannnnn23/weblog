@@ -34,12 +34,23 @@
         </div>
 
         <!-- Post Content -->
-        <div class="card-body p-5">
+    <div class="card-body p-5">
           <h1 class="card-title mb-4 fw-bold display-5"><%= @post.title %></h1>
-          <div class="post-content">
-            <p class="card-text fs-5 lh-lg text-dark"><%= simple_format(@post.body) %></p>
-          </div>
+
+          <% if @post.image.attached? %>
+        <div class="mb-4 text-center">
+          <%= image_tag @post.image, class: "img-fluid rounded shadow", style: "max-height: 400px; object-fit: cover; width: 100%;" %>
+
         </div>
+        <% end %>
+
+      <div class="post-content">
+        <p class="card-text fs-5 lh-lg text-dark">
+        <%= simple_format(@post.body) %>
+       </p>
+      </div>
+    </div>
+
 
         <!-- Action Buttons -->
         <div class="card-footer bg-light border-0 p-4">
